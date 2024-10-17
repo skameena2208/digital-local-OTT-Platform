@@ -1,0 +1,83 @@
+{% load static %}
+{% include "admin_header.html" %}
+
+
+   <!--::breadcrumb part start::-->
+   <section class="breadcrumb blog_bg">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-12">
+               <div class="breadcrumb_iner">
+                  <div class="breadcrumb_iner_item">
+                     <h2>View WebSeries</h2>
+                  </div>
+               </div>
+            </div>
+         </div>zx
+      </div>
+   </section>
+   <!--::breadcrumb part start::-->
+
+  <!-- ================ profile section start ================= -->
+
+
+
+                  <section class="blog_area area-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mb-5 mb-lg-0">
+          <div class="blog_left_sidebar">
+{% for x in profile %}
+            <article class="blog_item">
+              <div class="blog_item_img">
+                <img class="card-img rounded-0" src="{{x.thumbnail.url}}" height="500px" alt="{{x.title}}">
+                <a href="#" class="blog_item_date">
+                  <h3>{{x.release_date}}</h3>
+                  <p>{{x.duration}}</p>
+                </a>
+              </div>
+
+              <div class="blog_details">
+                <a class="d-inline-block" href="{{x.webseries_video.url}}">
+                  <h2>{{x.title}}</h2>
+                </a>
+                <p>{{x.description}}</p>
+                  <p>Directed by {{x.director}}</p>
+                <ul class="blog-info-link">
+                  <li><i class="far fa-user"></i> {{x.cast}}</li>
+                  <li>{{x.category}}</li>
+                    <li>{{x.language}}</li>
+                </ul>
+                  <br>
+                  <a href="{% url 'webseries_edit' id=x.id %}" class="button button-contactForm">Edit</a>
+                  <a href="{% url 'view_webseries_delete' id=x.id %}" onclick="return confirm('Really Want To Delete?')" class="button button-contactForm">Delete</a>
+                  <a href="{% url 'webseries_add_episode' id=x.id %}" class="button button-contactForm">Add Episodes</a>
+                  <a href="{% url 'view_webseries_episodes' id=x.id %}" class="button button-contactForm">View Episodes</a>
+
+              </div>
+            </article>
+              {% endfor %}
+
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="blog_right_sidebar">
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+          </div>
+
+  <!-- ================ contact section end ================= -->
+
+{% include "footer.html" %}

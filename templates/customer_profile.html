@@ -1,0 +1,92 @@
+{% load static %}
+{% include "customer_header.html" %}
+
+<!--::breadcrumb part start::-->
+<section class="breadcrumb blog_bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb_iner">
+                    <div class="breadcrumb_iner_item">
+                        <h2>Customer Profile</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--::breadcrumb part end::-->
+
+<!-- ================ Profile Section Start ================= -->
+<section class="contact-section">
+    <div class="container">
+        <div class="d-none d-sm-block mb-5 pb-4"></div>
+        <div class="row">
+            <div class="m-3">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Gender</th>
+                            <th>Age</th>
+                            <th>Mobile</th>
+                            <th>Address</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Action</th>
+                            <th>Deactivate</th>
+                            <th>History</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ x.name }}</td>
+                            <td>{{ x.email }}</td>
+                            <td>{{ x.gender }}</td>
+                            <td>{{ x.age }}</td>
+                            <td>{{ x.mobile }}</td>
+                            <td>{{ x.address }}</td>
+                            <!-- Display Start Date with status color -->
+                            <td>
+                                {% if active_subscription %}
+                                    <span class="badge {% if active_subscription.is_active %}badge-success{% else %}badge-danger{% endif %}">
+                                        {{ active_subscription.startdate }}
+                                    </span>
+                                {% else %}
+                                    N/A
+                                {% endif %}
+                            </td>
+                            <!-- Display End Date with status color -->
+                            <td>
+                                {% if active_subscription %}
+                                    <span class="badge {% if active_subscription.is_active %}badge-success{% else %}badge-danger{% endif %}">
+                                        {{ active_subscription.enddate }}
+                                    </span>
+                                {% else %}
+                                    N/A
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a href="{% url 'customer_edit' %}"><b>Update</b></a>
+                            </td>
+                            <td>
+                                <a href="{% url 'customer_deactivate' id=x.id %}" onclick="return confirm('Really Want To Deactivate Your Account!?')"><b>Deactivate</b></a>
+                            </td>
+                            <td>
+                                <a href="{% url 'customer_view_history' %}"><b>History</b></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table><br><br>
+
+                <!-- Display Expired Subscriptions History -->
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================ Profile Section End ================= -->
+
+{% include "footer.html" %}

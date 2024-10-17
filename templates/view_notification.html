@@ -1,0 +1,56 @@
+{% load static %}
+{% include "admin_header.html" %}
+
+
+   <!--::breadcrumb part start::-->
+   <section class="breadcrumb blog_bg">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-12">
+               <div class="breadcrumb_iner">
+                  <div class="breadcrumb_iner_item">
+                     <h2>View Notification</h2>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <!--::breadcrumb part start::-->
+
+  <!-- ================ profile section start ================= -->
+
+
+            <div class="m-3">
+            <table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Email</th>
+        <th>Description</th>
+        <th>Date & Time</th>
+        <th>Edit</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for x in profile %}
+    <tr>
+        <td>{{x.title}}</td>
+        <td>{{x.email}}</td>
+        <td>{{x.description}}</td>
+        <td>{{x.date_time}}</td>
+        <td><b><a href="{% url 'notification_edit' id=x.id %}" class="btn btn-warning">Update</a></b></td>
+        <td><b><a href="{% url 'view_notification_delete' id=x.id %}" onclick="return confirm ('Do You Really Want To Delete')" class="btn btn-danger" >Delete</a></b></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+
+</table><br></br>
+
+
+            </div>
+
+  <!-- ================ contact section end ================= -->
+
+{% include "footer.html" %}

@@ -1,0 +1,80 @@
+{% load static %}
+{% include "admin_header.html" %}
+
+<!--::breadcrumb part start::-->
+<section class="breadcrumb blog_bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb_iner">
+                    <div class="breadcrumb_iner_item">
+                        <h2>View Subscribers</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--::breadcrumb part end::-->
+
+<!-- ================ Subscribers list section start ================= -->
+<section class="contact-section ">
+    <div class="container">
+        <div class="d-none d-sm-block mb-5 pb-4"></div>
+        <div class="row">
+            <div class="col-12">
+                <h2 class="contact-title">Subscribers List</h2>
+            </div>
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Sno</th>
+                                <th>Email</th>
+                                <th>Subscription Plan</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Holder Name</th>
+                                <th>Card Number</th>
+                                <th>CVV Number</th>
+                                <th>Bank Name</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for subscriber in subscribers %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ subscriber.customer_email }}</td>
+                                <td>{{ subscriber.subscription.title }}</td> <!-- Access related subscription title -->
+                                <td>{{ subscriber.startdate }}</td>
+                                <td>{{ subscriber.enddate }}</td>
+                                <td>{{ subscriber.holder_name }}</td>
+                                <td>{{ subscriber.card_number|default_if_none:"N/A" }}</td>
+                                <td>{{ subscriber.cvv_number|default_if_none:"N/A" }}</td>
+                                <td>{{ subscriber.bank_name }}</td>
+                                <td>
+                                    <!-- Determine subscription status -->
+                                    {% if subscriber.enddate < today %}
+                                    Expired
+                                    {% else %}
+                                    Active
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="10" class="text-center">No subscribers found.</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ================ Subscribers list section end ================= -->
+
+{% include "footer.html" %}

@@ -1,0 +1,101 @@
+{% load static %}
+{% include "customer_header.html" %}
+
+
+   <!--::breadcrumb part start::-->
+   <section class="breadcrumb blog_bg">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-12">
+               <div class="breadcrumb_iner">
+                  <div class="breadcrumb_iner_item">
+                     <h2>Customer Edit</h2>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+  <!-- ================ contact section start ================= -->
+  <section class="contact-section ">
+    <div class="container">
+      <div class="d-none d-sm-block mb-5 pb-4"></div>
+
+      <div class="row">
+        <div class="col-12">
+          <h2 class="contact-title">Edit Profile</h2>
+        </div>
+        <div class="col-lg-8">
+          <form  method="post" action="{% url 'customer_update' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+               <div class="col-10">
+                <div class="form-group">
+                  <input class="form-control placeholder hide-on-focus" name="id" id="id" type="number" value="{{x.id}}" placeholder="id" readonly required>
+                </div>
+              </div>
+               <div class="col-10">
+                <div class="form-group">
+                    <label>Email:</label>
+                  <input class="form-control placeholder hide-on-focus" name="email" id="email" type="email" value="{{x.email}}" placeholder="Enter email address" readonly required>
+                </div>
+              </div>
+              <div class="col-10">
+                <div class="form-group">
+                    <label>Name:</label>
+                  <input class="form-control placeholder hide-on-focus" name="name" id="name" type="text" value="{{x.name}}" placeholder="Enter your name" required>
+                </div>
+              </div>
+
+              <div class="col-10">
+                <div class="form-group" >
+                    <label>Gender:</label>
+                  <select name="gender" class="form-control placeholder hide-on-focus" required>
+                    <option disabled value="-1">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Others">Others</option>
+
+                  </select>
+                </div>
+              </div>
+              <div class="col-10">
+                <div class="form-group">
+                    <label>Age:</label>
+                  <input class="form-control placeholder hide-on-focus" name="age" id="age" type="number" value="{{x.age}}" placeholder="Enter your Age" required>
+                </div>
+              </div>
+              <div class="col-10">
+                <div class="form-group">
+                    <label>Mobile:</label>
+                  <input class="form-control placeholder hide-on-focus" name="mobile" id="mobile" type="number" value="{{x.mobile}}" placeholder="Enter Mobile Number" required>
+                </div>
+              </div>
+
+              <div class="col-10">
+                <div class="form-group">
+                    <label>Address:</label>
+                  <input class="form-control placeholder hide-on-focus" name="address" id="address" type="text" value="{{x.address}}" placeholder="Enter address" required>
+                </div>
+              </div>
+
+              <div class="col-10">
+                <div class="form-group">
+                    <label></label>
+                  <input class="form-control placeholder hide-on-focus mb-3" name="password" id="password" type="hidden" value="{{x.password}}" placeholder="Enter password" required>
+
+                  <button type="submit" class="button button-contactForm">Update</button>
+              </div>
+
+            </div>
+          </form>
+        </div>
+        </div>
+
+
+      </div>
+  </section>
+  <!-- ================ contact section end ================= -->
+
+{% include "footer.html" %}

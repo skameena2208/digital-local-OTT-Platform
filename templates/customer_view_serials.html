@@ -1,0 +1,72 @@
+{% load static %}
+{% include "customer_header.html" %}
+
+<!--::breadcrumb part start::-->
+<section class="breadcrumb blog_bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb_iner">
+                    <div class="breadcrumb_iner_item">
+                        <h2>View Serials</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--::breadcrumb part end::-->
+
+<!-- ================ profile section start ================= -->
+<section class="blog_area area-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mb-5 mb-lg-0">
+                <div class="blog_left_sidebar">
+                    {% for x in profile %}
+                    <article class="blog_item">
+                        <div class="blog_item_img">
+                            <img class="card-img rounded-0" src="{{ x.thumbnail.url }}" alt="">
+                            <a href="#" class="blog_item_date">
+                                <h3>{{ x.duration }}</h3>
+                            </a>
+                        </div>
+
+                        <div class="blog_details">
+                            <a class="d-inline-block" href="{{ x.movie_video.url }}">
+                                <h2>{{ x.title }}</h2>
+                            </a>
+                            <p>{{ x.description }}</p>
+                            <p>Directed by {{ x.director }}</p>
+                            <ul class="blog-info-link">
+                                <li><i class="far fa-user"></i> {{ x.cast }}</li>
+                                <li>{{ x.category }}</li>
+                                <li>{{ x.language }}</li>
+                            </ul>
+                            <br>
+
+                            {% if eligible_to_watch %}
+                            <!-- Show 'View Episodes' if eligible -->
+                            <a href="{% url 'customer_view_serials_episodes' id=x.id %}" class="button button-contactForm">View Episodes</a>
+                            {% else %}
+                            <!-- Redirect to 'customer_view_plans' if not eligible -->
+                            <a href="{% url 'customer_view_plans' %}" class="button button-contactForm">Buy Plan to View Episodes</a>
+                            {% endif %}
+
+                            <a href="{% url 'customer_view_serial_reviews' id=x.id %}" class="button button-contactForm">View Review</a>
+                            <a href="{% url 'add_serial_review' id=x.id %}" class="button button-contactForm">Add Review</a>
+                        </div>
+                    </article>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="blog_right_sidebar">
+                    <!-- Sidebar content -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% include "footer.html" %}

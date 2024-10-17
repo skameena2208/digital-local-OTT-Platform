@@ -1,0 +1,130 @@
+{% load static %}
+{% include "admin_header.html" %}
+
+   <!--::banner part start::-->
+   <section class="banner_part">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-5 offset-lg-1 col-sm-8 offset-sm-2">
+               <div class="banner_text aling-items-center">
+                  <div class="banner_text_iner">
+                     <h2>Cinemaa</h2>
+                     <h5>Your Local Entertainment <br/><br/>Hub – Anytime, Anywhere.</h5>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <!--::banner part end::-->
+
+   <!--::team part end::-->
+ <section class="about_part section-padding">
+      <div class="container">
+         <div class="row">
+            <div class="section_tittle">
+               <h2><span>Most Watched</span> Movies</h2>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-lg-6 col-md-6">
+               <div class="about_img">
+                  <img src="{% static 'img/sitaramam.webp' %}" alt="" height="550px">
+               </div>
+            </div>
+            <div class="offset-lg-1 col-lg-5 col-sm-8 col-md-6">
+               <div class="about_text">
+                  <h2>Sita Ramam</h2>
+                  <p>An orphan soldier, Lieutenant Ram's life changes, after he gets a letter from a girl named Sita. He meets her and love blossoms between them. When he comes back to his camp in Kashmir,After he gets caught in jail, he sends a letter to Sita which won't reach her.</p>
+                  <a href="#" class="btn_1">Watch Movie</a>
+                  <div class="about_part_counter">
+                     <div class="single_counter">
+                        <span class="counter">300</span>K+
+                        <p>Views</p>
+                     </div>
+                     <div class="single_counter">
+                        <span class="counter">200</span>K+
+                        <p>Likes</p>
+                     </div>
+                     <div class="single_counter">
+                        <span class="counter">150</span>K+
+                        <p>Shares</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <!--::team part end::-->
+
+   <!--::project part start::-->
+  <section class="portfolio_area pt_30 padding_bottom">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-12">
+               <div class="section_tittle">
+                  <h2><span>Beautiful </span>Movies</h2>
+               </div>
+                              <div class="portfolio-filter">
+                                  <h2>Hello City We are <br>
+                                         here to provide<span>OTTs</span></h2>
+                              </div>
+               <div class="portfolio_item tab-content" id="myTabContent">
+                  <div class="row align-items-center justify-content-between tab-pane fade show active"
+                     id="Architecture" role="tabpanel" aria-labelledby="Architecture-tab">
+                     <div class="col-lg-6 col-sm-12 col-md-6">
+                        <div class="portfolio_box">
+                           <a href="{% static 'img/shyam.jpeg' %}" class="img-gal">
+                              <div class="single_portfolio">
+                                 <img class="img-fluid w-100" src="{% static 'img/shyam.jpeg' %}" alt="">
+                              </div>
+                           </a>
+                           <div class="short_info">
+                              <p>Shyam Singh Roy</p>
+                              <h5><a href="#">Telugu-language period <br>
+                                    romantic drama film</a></h5>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-lg-5 col-md-6">
+                        <div class="row">
+                           <div class="col-lg-12 col-sm-6 col-md-12 single_portfolio_project">
+                              <div class="portfolio_box">
+                                 <a href="{% static 'img/color2.jpeg' %}" class="img-gal">
+                                    <div class="single_portfolio">
+                                       <img class="img-fluid w-100" src="{% static 'img/Darling.jpg' %}" alt="" height="400px">
+                                    </div>
+                                 </a>
+                                 <div class="short_info">
+                                    <p>Darling</p>
+                                    <h5><a href="#"> film about a man who pretends to reunite with his childhood sweetheart in Switzerland to avoid an unwanted marriage to a gangster's daughter.</a></h5>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-lg-12 col-sm-6 col-md-12 single_portfolio_project">
+                              <div class="portfolio_box">
+                                 <a href="{% static 'img/v2.jpeg' %}" class="img-gal">
+                                    <div class="single_portfolio">
+                                       <img class="img-fluid w-100" src="{% static 'img/v2.jpeg' %}" alt="">
+                                    </div>
+                                 </a>
+                                 <div class="short_info">
+                                    <p>Varudu Kavalenu</p>
+                                    <h5><a href="#">Romantic comedy film in the  <br>
+                                          Indian Telugu language</a></h5>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <!--::project part end::-->
+
+   <!--::service part end::-->
+{% include "footer.html" %}

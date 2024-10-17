@@ -1,0 +1,84 @@
+{% load static %}
+{% include "customer_header.html" %}
+
+
+   <!--::breadcrumb part start::-->
+   <section class="breadcrumb blog_bg">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-12">
+               <div class="breadcrumb_iner">
+                  <div class="breadcrumb_iner_item">
+                     <h2>Add Review For {{x.title}}</h2>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <!--::breadcrumb part start::-->
+
+  <!-- ================ customer login section start ================= -->
+  <section class="contact-section ">
+    <div class="container">
+      <div class="d-none d-sm-block mb-5 pb-4"></div>
+        <div class="row">
+        <div class="col-12">
+        </div>
+        <div class="col-lg-8">
+          <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+            <div class="row">
+                <div class="col-12">
+                <div class="form-group">
+                    <label>Web_series Id:</label>
+                  <input class="form-control placeholder hide-on-focus" name="web_series"  type="number" value="{{x.id}}" placeholder="Movie Title" readonly>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-group">
+                    <label>Title:</label>
+                  <input class="form-control placeholder hide-on-focus" name="title" id="title" type="text" value="{{x.title}}" placeholder="Movie Title" readonly>
+                </div>
+              </div>
+                <div class="col-12">
+                <div class="form-group">
+                    <label>Customer Email:</label>
+                  <input class="form-control placeholder hide-on-focus" name="customer_email" id="customer_email" type="email" value="{{email}}" placeholder="Enter Your Email" readonly required>
+                </div>
+              </div>
+                  <div class="col-12">
+                <div class="form-group">
+                    <label>Review :</label>
+                  <input class="form-control placeholder hide-on-focus" name="review" id="review"   type="text"  required>
+                </div>
+              </div>
+
+                <div class="col-12">
+                <div class="form-group">
+                    <label>Rating:</label>
+                  <select name="rating" class="form-control placeholder hide-on-focus mb-3" required>
+                      <option value="-1">Rating</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                  </select>
+
+              <button type="submit" class="button button-contactForm">Add Review</button>
+            </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-lg-4">
+
+
+            </div>
+          </div>
+        </div>
+
+  </section>
+  <!-- ================ contact section end ================= -->
+
+{% include "footer.html" %}

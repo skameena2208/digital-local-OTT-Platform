@@ -1,0 +1,67 @@
+{% load static %}
+{% include "admin_header.html" %}
+
+
+   <!--::breadcrumb part start::-->
+   <section class="breadcrumb blog_bg">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-12">
+               <div class="breadcrumb_iner">
+                  <div class="breadcrumb_iner_item">
+                     <h2>View Plans</h2>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <!--::breadcrumb part start::-->
+
+  <!-- ================ profile section start ================= -->
+
+
+            <div class="m-3">
+            <table class="table table-bordered">
+    <thead>
+    <tr>
+
+        <th>Email</th>
+        <th>Title</th>
+        <th>Cost</th>
+        <th>Months</th>
+        <th>Discount</th>
+        <th>Date_Time</th>
+        <th>Delete</th>
+
+
+    </tr>
+    </thead>
+                {% for x in plan %}
+    <tbody>
+    <tr>
+
+        <td>{{x.email}}</td>
+        <td>{{x.title}}</td>
+        <td>{{x.cost}}</td>
+        <td>{{x.months}}</td>
+        <td>{{x.discount}}</td>
+        <td>{{x.date_time}}</td>
+<td>
+    <a href="{% url 'plan_delete' id=x.id %}" onclick="return confirm('Really Want To Delete?')" class="button button-contactForm">Delete</a>
+</td>
+
+    </tr>
+    </tbody>
+{% endfor %}
+</table><br></br>
+
+
+            </div>
+          </div>
+
+    </div>
+  </section>
+  <!-- ================ contact section end ================= -->
+
+{% include "footer.html" %}

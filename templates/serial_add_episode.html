@@ -1,0 +1,83 @@
+{% load static %}
+{% include "admin_header.html" %}
+
+<!--::breadcrumb part start::-->
+<section class="breadcrumb blog_bg">
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-12">
+            <div class="breadcrumb_iner">
+               <div class="breadcrumb_iner_item">
+                  <h2>Add Episode to "{{ x.title }}"</h2>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!--::breadcrumb part end::-->
+
+<!-- ================ Add Episode section start ================= -->
+<section class="add_episode area-padding">
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-8 mb-5 mb-lg-0">
+            <article class="webseries_item">
+               <div class="webseries_item_img">
+                  <img class="card-img rounded-0" src="{{ x.thumbnail.url }}" alt="{{ x.title }}">
+               </div>
+               <div class="webseries_details">
+                    <h2>Add a New Episode</h2>
+                  <form method="post"  enctype="multipart/form-data">
+                     {% csrf_token %}
+                     <div class="col-12">
+                        <div class="form-group">
+                            <div class="col-12">
+                        <div class="form-group">
+                           <label>Serial Id:</label>
+                           <input class="form-control placeholder hide-on-focus" name="serial" value="{{x.id}}" type="number" placeholder="Serial Id" readonly>
+                        </div>
+                     </div>
+                           <label>Title:</label>
+                           <input class="form-control placeholder hide-on-focus" name="title" id="title" type="text" value="{{x.title}}" placeholder="Serial Title" readonly>
+                        </div>
+                     </div>
+                     <div class="col-12">
+                        <div class="form-group">
+                           <label>Description:</label>
+                           <input class="form-control placeholder hide-on-focus" name="description" id="description" type="text" value="{{x.description}}" placeholder="Enter Description" readonly>
+                        </div>
+                     </div>
+
+
+                     <div class="col-12">
+                        <div class="form-group">
+                           <label>Episode Number:</label>
+                           <input class="form-control placeholder hide-on-focus" name="episode_number" id="episode_number" type="number" placeholder="Enter Episode Number" required>
+                        </div>
+                     </div>
+
+                        <div class="col-12">
+                        <div class="form-group">
+                             <label>Thumbnail:</label>
+                           <input class="form-control placeholder hide-on-focus" name="thumbnail" id="thumbnail" type="file">
+                        </div>
+                     </div>
+                     <div class="col-12">
+                        <div class="form-group">
+                           <label>Video:</label>
+                           <input class="form-control placeholder hide-on-focus mb-3" name="video" id="video" type="file" required >
+
+                     <button type="submit" class="button button-contactForm">Add Episode</button>
+                        </div>
+                     </div>
+                  </form>
+               </div>
+            </article>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- ================ Add Episode section end ================= -->
+
+{% include "footer.html" %}

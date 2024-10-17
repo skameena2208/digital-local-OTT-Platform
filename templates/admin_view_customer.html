@@ -1,0 +1,71 @@
+{% load static %}
+{% include "admin_header.html" %}
+
+
+   <!--::breadcrumb part start::-->
+   <section class="breadcrumb blog_bg">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-12">
+               <div class="breadcrumb_iner">
+                  <div class="breadcrumb_iner_item">
+                     <h2>View Customers</h2>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <!--::breadcrumb part start::-->
+
+  <!-- ================ profile section start ================= -->
+
+
+            <div class="m-3">
+            <table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Gender</th>
+        <th>Age</th>
+        <th>Mobile</th>
+        <th>Address</th>
+        <th>Status</th>
+        <th>Action</th>
+
+    </tr>
+    </thead>
+                {% for x in customer %}
+    <tbody>
+    <tr>
+        <td>{{x.name}}</td>
+        <td>{{x.email}}</td>
+        <td>{{x.gender}}</td>
+        <td>{{x.age}}</td>
+        <td>{{x.mobile}}</td>
+        <td>{{x.address}}</td>
+        <td>{{x.status}}</td>
+        <td>{% if x.status == 'pending' %}
+              <a href="{% url 'accept_customer' id=x.id %}" class="btn btn-success" >Accept</a> <br><br>
+              <a class="btn btn-danger" href="{% url 'reject_customer' id=x.id %}">Reject</a>
+              {% elif x.status == 'Accepted' %}
+              <button class="btn btn-warning" disabled="disabled" data-toggle="modal" data-target="#reply_modal">Accepted</button>
+              {% else %}
+              <button class="btn btn-danger" disabled="disabled" data-toggle="modal" data-target="#reply_modal">Rejected</button>
+            {% endif %}</td>
+
+        </tr>
+    </tbody>
+{% endfor %}
+</table><br></br>
+
+
+            </div>
+          </div>
+
+    </div>
+  </section>
+  <!-- ================ contact section end ================= -->
+
+{% include "footer.html" %}

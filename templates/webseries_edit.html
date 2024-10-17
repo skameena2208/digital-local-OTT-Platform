@@ -1,0 +1,131 @@
+{% load static %}
+{% load duration_filters %}
+{% include "admin_header.html" %}
+
+
+   <!--::breadcrumb part start::-->
+   <section class="breadcrumb blog_bg">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-12">
+               <div class="breadcrumb_iner">
+                  <div class="breadcrumb_iner_item">
+                     <h2>Webseries Edit</h2>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+  <!-- ================ contact section start ================= -->
+  <section class="contact-section area-padding">
+    <div class="container">
+      <div class="d-none d-sm-block mb-5 pb-4"></div>
+
+      <div class="row">
+        <div class="col-12">
+          <h2 class="contact-title">Edit Webseries</h2>
+        </div>
+        <div class="col-lg-8">
+          <form  method="post" action="{% url 'webseries_update' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group">
+                  <label>Title:</label>
+                  <input class="form-control placeholder hide-on-focus" name="title" id="title" type="text" value="{{x.title}}" placeholder="Movie Title" required>
+                </div>
+              </div>
+
+                <div class="col-12">
+                <div class="form-group">
+                  <label>Cast:</label>
+                  <input class="form-control placeholder hide-on-focus" name="cast" id="cast" type="text" value="{{x.cast}}" placeholder="Enter Cast" required>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-group">
+                  <label>Id:</label>
+                  <input class="form-control placeholder hide-on-focus" name="id" id="id" type="number" value="{{x.id}}" placeholder="Id" readonly>
+                </div>
+              </div>
+                <div class="col-12">
+                <div class="form-group">
+                  <label>Category:</label>
+                  <input class="form-control placeholder hide-on-focus" name="category" id="category" type="text" value="{{x.category}}" placeholder="Movie Category" required>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-group">
+                  <label>Description:</label>
+                  <input class="form-control placeholder hide-on-focus" name="description" id="description" type="text" value="{{x.description}}" placeholder="Enter Description" required>
+                </div>
+              </div>
+                <div class="col-12">
+                <div class="form-group">
+                  <label>Director:</label>
+                  <input class="form-control placeholder hide-on-focus" name="director" id="director" type="text" value="{{x.director}}" placeholder="Director Name" required>
+                </div>
+              </div>
+                <div class="col-12">
+                <div class="form-group">
+                  <label>Duration:</label>
+                  <input class="form-control placeholder hide-on-focus" name="duration" id="duration" type="text" value="{{ x.duration|duration_to_time }}" placeholder="Movie Duration" required>
+                </div>
+              </div>
+                 <div class="col-12">
+                            <div class="form-group">
+                                <label>Release Date:</label>
+                                <input class="form-control placeholder hide-on-focus" name="release_date" id="release_date" type="date" value="{{x.release_date|date:'Y-m-d' }}" placeholder="Release Date" required>
+                            </div>
+                        </div>
+            <div class="col-12">
+                <div class="form-group">
+                  <label>Language:</label>
+                  <input class="form-control placeholder hide-on-focus" name="language" id="language" type="text" value="{{x.language}}" placeholder="Movie Language" required>
+                </div>
+              </div>
+                <div class="col-12">
+                <div class="form-group">
+                  <label>Thumbnail:</label>
+                  <input class="form-control placeholder hide-on-focus" name="thumbnail" id="thumbnail" value="{{x.thumbnail}}" type="file">
+                </div>
+              </div>
+                <div class="col-12">
+                <div class="form-group">
+                  <label>Trailer:</label>
+                  <input class="form-control placeholder hide-on-focus" name="movie_video" id="webseries_video" value="{{x.webseries_video}}" type="file">
+                </div>
+              </div>
+                <div class="col-12">
+                <div class="form-group">
+                  <label>Episode:</label>
+                  <input class="form-control placeholder hide-on-focus mb-3" name="episode" id="episode" value="{{x.episode}}" type="file">
+
+                  <button type="submit" class="button button-contactForm">Update</button>
+              </div>
+
+            </div>
+          </form>
+        </div>
+        </div>
+
+
+      </div>
+  </section>
+  <!-- ================ contact section end ================= -->
+
+{% include "footer.html" %}
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Get today's date in YYYY-MM-DD format
+        const today = new Date().toISOString().split('T')[0];
+        // Set the min attribute of the date input to today's date
+        const releaseDateInput = document.getElementById('release_date');
+        if (releaseDateInput) {
+            releaseDateInput.setAttribute('min', today);
+        }
+    });
+</script>

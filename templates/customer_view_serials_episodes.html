@@ -1,0 +1,64 @@
+{% load static %}
+{% include "admin_header.html" %}
+
+<!--::breadcrumb part start::-->
+<section class="breadcrumb blog_bg">
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-12">
+            <div class="breadcrumb_iner">
+               <div class="breadcrumb_iner_item">
+                  <h2>View Serials Episodes</h2>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!--::breadcrumb part end::-->
+
+<!-- ================ profile section start ================= -->
+<section class="blog_area area-padding">
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-8 mb-5 mb-lg-0">
+            <div class="blog_left_sidebar">
+               {% for x in episode %}
+               <article class="blog_item">
+                  <div class="blog_item_img">
+                     <!-- Check if thumbnail has a file associated with it -->
+                     {% if x.thumbnail and x.thumbnail.url %}
+                        <img class="card-img rounded-0" src="{{ x.thumbnail.url }}" alt="{{ x.title }}">
+                     {% else %}
+                        <!-- Display a default image if no thumbnail is available -->
+                        <img class="card-img rounded-0" src="{% static 'images/default-thumbnail.jpg' %}" alt="No Thumbnail Available">
+                     {% endif %}
+                     <a href="#" class="blog_item_date">
+                        <h3>{{ x.title }}</h3>
+                     </a>
+                  </div>
+
+                  <div class="blog_details">
+                     <a class="d-inline-block" href="{{ x.video.url }}">
+                        <h2>{{ x.title }}</h2>
+                     </a>
+                     <p>{{ x.description }}</p>
+                     <p>Episode Number {{ x.episode_number }}</p>
+                     <br>
+                     <a href="{{ x.video.url }}" class="button button-contactForm">Watch Episode</a>
+                  </div>
+               </article>
+               {% endfor %}
+            </div>
+         </div>
+         <div class="col-lg-4">
+            <div class="blog_right_sidebar">
+               <!-- Sidebar content can go here -->
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- ================ profile section end ================= -->
+
+{% include "footer.html" %}

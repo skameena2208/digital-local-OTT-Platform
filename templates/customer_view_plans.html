@@ -1,0 +1,51 @@
+{% load static %}
+{% include "customer_header.html" %}
+
+<!--::breadcrumb part start::-->
+<section class="breadcrumb blog_bg">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="breadcrumb_iner">
+          <div class="breadcrumb_iner_item">
+            <h2>View Plans</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--::breadcrumb part end::-->
+
+<!-- Message Section -->
+{% if message %}
+<div class="alert alert-info text-center" role="alert">
+  {{ message }}
+</div>
+{% endif %}
+
+<!-- ================ Plans Section Start ================= -->
+<div class="container my-5">
+  <div class="row">
+    {% for x in plans %}
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">{{ x.title }}</h5>
+          <p class="card-text"><strong>Email:</strong> {{ x.email }}</p>
+          <p class="card-text"><strong>Months:</strong> {{ x.months }}</p>
+          <p class="card-text"><strong>Cost:</strong> ₹{{ x.cost }}</p>
+          <p class="card-text"><strong>Discount:</strong> ₹{{ x.discount }}</p>
+        </div>
+        <!-- Buy Button at the bottom of the card -->
+        <div class="card-footer text-center">
+          <a href="{% url 'buy_plan' id=x.id %}" class="btn btn-primary">Buy Plan</a> <!-- Adjust the URL and view accordingly -->
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<!-- ================ Plans Section End ================= -->
+
+{% include "footer.html" %}
